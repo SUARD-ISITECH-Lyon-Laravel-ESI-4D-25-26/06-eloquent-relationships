@@ -1,0 +1,94 @@
+{
+  "tests": [
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_user_create_task",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_task_with_no_user",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_show_users_comments",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_show_roles_with_users",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_teams_with_users",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_countries_with_team_size",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_attachments_polymorphic",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_belongstomany_add",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Run PHPUnit tests",
+      "setup": "",
+      "run": "vendor/bin/phpunit --testdox --filter=test_filter_users",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
