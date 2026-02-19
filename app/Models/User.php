@@ -44,13 +44,15 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        // TASK: fix this by adding a parameter
+        // TÂCHE : corrigez cette méthode en ajoutant le paramètre manquant (foreign key)
         return $this->hasMany(Task::class);
     }
 
     public function comments()
     {
-        // TASK: add the code here for two-level relationship
+        // TÂCHE : ajoutez ici le code pour définir la relation à deux niveaux (hasManyThrough)
+        // Indice : consultez la documentation Eloquent sur hasManyThrough (https://laravel.com/docs/eloquent-relationships#has-many-through)
+        // Votre code ici
     }
 
     public function projects()

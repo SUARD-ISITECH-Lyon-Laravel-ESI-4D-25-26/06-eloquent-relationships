@@ -18,7 +18,7 @@ class RelationshipsTest extends TestCase
 {
     use RefreshDatabase;
 
-    // TASK: find out why this relationship fails, and fix it in Eloquent Model
+    // TÂCHE : trouvez pourquoi cette relation échoue et corrigez le modèle Eloquent (Model)
     public function test_user_create_task()
     {
         $user = User::factory()->create();
@@ -28,7 +28,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: this table throws an error, fix it
+    // TÂCHE : cette table génère une erreur, corrigez-la
     public function test_task_with_no_user()
     {
         Task::create(['name' => 'Some task']);
@@ -38,7 +38,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: define the two-level relationship in the User model
+    // TÂCHE : définissez la relation à deux niveaux dans le modèle User (Model)
     public function test_show_users_comments()
     {
         $user = User::factory()->create();
@@ -56,7 +56,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: pivot table name in the list
+    // TÂCHE : corrigez le nom de la table pivot (pivot table) dans la liste
     public function test_show_roles_with_users()
     {
         $user = User::factory()->create();
@@ -70,7 +70,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: pivot table with extra fields
+    // TÂCHE : corrigez la table pivot (pivot table) avec des champs supplémentaires
     public function test_teams_with_users()
     {
         $user = User::factory()->create();
@@ -89,7 +89,7 @@ class RelationshipsTest extends TestCase
         $response->assertSee($position);
     }
 
-    // TASK: average number from the relationship
+    // TÂCHE : calculez la moyenne d'un champ via la relation (relationship)
     public function test_countries_with_team_size()
     {
         $country = Country::create(['name' => 'United Kingdom']);
@@ -109,7 +109,7 @@ class RelationshipsTest extends TestCase
         $response->assertStatus(200);
     }
 
-    // TASK: polymorphic relations
+    // TÂCHE : définissez la relation polymorphique (polymorphic relationship) dans le modèle Attachment
     public function test_attachments_polymorphic()
     {
         $task = Task::create(['name' => 'Some task']);
@@ -137,7 +137,7 @@ class RelationshipsTest extends TestCase
         $response->assertSee('Comment');
     }
 
-    // TASK: add a record to belongstomany relationship
+    // TÂCHE : ajoutez un enregistrement via la relation belongsToMany
     public function test_belongstomany_add()
     {
         $user = User::factory()->create();
@@ -156,7 +156,7 @@ class RelationshipsTest extends TestCase
         ]);
     }
 
-    // TASK: show only the users who have at least one project
+    // TÂCHE : affichez uniquement les utilisateurs ayant au moins un projet
     public function test_filter_users()
     {
         $user1 = User::factory()->create();

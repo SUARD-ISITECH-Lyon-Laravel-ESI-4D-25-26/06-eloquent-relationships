@@ -13,7 +13,7 @@ class Team extends Model
 
     public function users()
     {
-        // TASK: fix this by adding some extra code
+        // TÂCHE : corrigez cette méthode en ajoutant le code nécessaire pour exposer les champs supplémentaires de la table pivot (withPivot)
         return $this->belongsToMany(User::class);
     }
 

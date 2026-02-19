@@ -1,101 +1,130 @@
-## Test Your Laravel Eloquent Relationships Skills
+## Testez vos compétences Laravel — Relations Eloquent
 
-This repository is a test for you: perform a set of tasks listed below, and fix the PHPUnit tests, which are currently intentionally failing.
+Ce dépôt est un exercice pratique : réalisez les tâches listées ci-dessous
+et faites passer les tests PHPUnit, qui échouent volontairement pour le moment.
 
-To test if all the functions work correctly, there are PHPUnit tests in `tests/Feature/RelationshipsTest.php` file.
+Pour vérifier votre progression, les tests se trouvent dans `tests/Feature/RelationshipsTest.php`.
 
-In the very beginning, if you run `php artisan test`, or `vendor/bin/phpunit`, all tests fail.
-Your task is to make those tests pass.
+Au départ, si vous exécutez `php artisan test`, tous les tests échouent.
+Votre objectif est de les faire passer un par un.
 
-## How to Submit Your Solution
-
-If you want to submit your solution, you should make a Pull Request to the `main` branch.
-It will automatically run the tests via GitHub Actions and will show you/me if the test pass.
-
-If you don't know how to make a Pull Request, [here's my video with instructions](https://www.youtube.com/watch?v=vEcT6JIFji0).
-
-This task is mostly self-served, so I'm not planning review or merge the Pull Requests. This test is for yourselves to assess your skills, the automated tests will be your answer if you passed the test :)
+> ⚠️ **Vous n'avez pas le droit de modifier les fichiers de tests.**
 
 
-## Questions / Problems?
+## Installation du projet
 
-If you're struggling with some tasks, or you have suggestions how to improve the task, create a GitHub Issue.
+```sh
+git clone <url-du-depot> projet
+cd projet
+cp .env.example .env  # Éditez vos variables d'environnement
+composer install
+php artisan key:generate
+```
 
-Good luck!
+Puis lancez `php artisan test` pour voir les erreurs à corriger.
 
----
 
-## Task 1. HasMany Defined Incorrectly.
+## Soumettre votre solution
 
-In `app/Models/User.php` file, the relationship is missing some parameter. Fix this.
-
-Test method `test_user_create_task()`.
+Créez une Pull Request (ou Merge Request) vers la branche `main`.
 
 ---
 
-## Task 2. BelongsTo with Empty Relationship.
+## Tâche 1. Relation hasMany mal définie
 
-In the route `/tasks`, the table is loading with error, if it can't find the user related to the task. Fix this: the table should load, still listing all the tasks, just showing an empty space where the user name should have been.
+Dans `app/Models/User.php`, la méthode `tasks()` utilise une relation hasMany,
+mais il manque un paramètre (la foreign key). Corrigez cette définition.
 
-There are multiple ways how to fix this, choose whichever way works for you.
-
-Test method `test_task_with_no_user()`.
-
----
-
-## Task 3. Two-level Relationship.
-
-In the route `/users/{user}`, the table should load the comments that are written on the task that belong to a user. Define the relationship from User to Comment in the User model, so that the Blade file users/show.blade.php would work.
-
-Test method `test_show_users_comments()`.
+Méthode de test : `test_user_create_task()`.
 
 ---
 
-## Task 4. BelongsToMany - Pivot Table Name.
+## Tâche 2. Relation belongsTo avec utilisateur manquant
 
-In the route `/roles`, the table should load the roles with the number of users belonging to them. But the relationship in `app/Models/Role.php` model is defined incorrectly, fix that relationship definition.
+La route GET `/tasks` affiche la liste des tâches, mais elle génère une erreur
+quand une tâche n'est associée à aucun utilisateur.
 
-Test method `test_show_roles_with_users()`.
+Corrigez ce problème : la liste doit s'afficher même si l'utilisateur est absent,
+en affichant simplement une cellule vide à la place du nom.
 
----
+Plusieurs approches sont possibles — choisissez celle qui vous convient.
 
-## Task 5. BelongsToMany - Extra Fields in Pivot Table.
-
-In the route `/teams`, the table should show the teams with users, each user with a few additional fields. Fix the relationship definition in `app/Models/Team.php` so that the Blade file `teams/index.blade.php` would show the correct data.
-
-Test method `test_teams_with_users()`.
+Méthode de test : `test_task_with_no_user()`.
 
 ---
 
-## Task 6. HasMany - Average from Field Value
+## Tâche 3. Relation à deux niveaux (hasManyThrough)
 
-In the route `/countries`, the table should show the countries with average team size. Fix the Controller to load the relationship number, as it is expected in the Blade.
+La route GET `/users/{user}` affiche les commentaires des tâches appartenant à un utilisateur.
+Définissez la relation de `User` vers `Comment` dans le modèle `User`,
+afin que la vue `users/show.blade.php` fonctionne correctement.
 
-Test method `test_countries_with_team_size()`.
-
----
-
-## Task 7. Polymorphic Attachments
-
-In the route `/attachments`, the table should show the filenames and the class names of Task and Comment models. Fix the `app/Models/Attachment.php` relationship to make it work.
-
-Test method `test_attachments_polymorphic()`.
+Méthode de test : `test_show_users_comments()`.
 
 ---
 
-## Task 8. Add BelongsToMany Row
+## Tâche 4. Relation belongsToMany — Nom de la table pivot
 
-In the POST route `/projects`, the project should be saved for a logged-in user, with start_date field from $request. Write that sentence in the Controller.
+La route GET `/roles` affiche la liste des rôles avec le nombre d'utilisateurs associés.
+La relation dans `app/Models/Role.php` est mal définie : le nom de la table pivot (pivot table)
+est incorrect. Corrigez la définition de la relation.
 
-Test method `test_belongstomany_add()`.
-
----
-
-## Task 9. Filter BelongsToMany Rows
-
-In the route `/users`, the list should show only the users with at least one project. Fix the Controller to add this filter.
-
-Test method `test_filter_users()`.
+Méthode de test : `test_show_roles_with_users()`.
 
 ---
 
+## Tâche 5. Relation belongsToMany — Champs supplémentaires dans la table pivot
+
+La route GET `/teams` affiche les équipes avec leurs utilisateurs, chaque utilisateur
+ayant des champs supplémentaires issus de la table pivot (pivot table).
+Corrigez la relation dans `app/Models/Team.php` pour que la vue `teams/index.blade.php`
+affiche les données correctement.
+
+Méthode de test : `test_teams_with_users()`.
+
+---
+
+## Tâche 6. Relation hasMany — Moyenne d'un champ
+
+La route GET `/countries` affiche les pays avec la taille moyenne de leurs équipes.
+Corrigez le controller `CountryController` pour charger la moyenne via la relation,
+telle qu'attendue par la vue Blade.
+
+Méthode de test : `test_countries_with_team_size()`.
+
+---
+
+## Tâche 7. Relation polymorphique (Polymorphic)
+
+La route GET `/attachments` affiche les noms de fichiers et les noms de classe
+des modèles `Task` et `Comment`. Corrigez la relation dans `app/Models/Attachment.php`
+pour que cela fonctionne.
+
+Méthode de test : `test_attachments_polymorphic()`.
+
+---
+
+## Tâche 8. Ajout d'un enregistrement via belongsToMany
+
+La route POST `/projects` doit enregistrer un projet pour l'utilisateur connecté,
+avec le champ `start_date` issu de la requête (`$request`).
+Écrivez cette ligne dans le controller `ProjectController`.
+
+Méthode de test : `test_belongstomany_add()`.
+
+---
+
+## Tâche 9. Filtrage via belongsToMany
+
+La route GET `/users` doit afficher uniquement les utilisateurs ayant au moins un projet.
+Corrigez le controller `UserController` pour ajouter ce filtre.
+
+Méthode de test : `test_filter_users()`.
+
+---
+
+## Questions / Problèmes ?
+
+Si vous rencontrez des difficultés ou avez des suggestions, créez une Issue.
+
+Bon courage !

@@ -13,6 +13,8 @@ class Attachment extends Model
 
     public function attachable()
     {
-        // TASK: fill in the code to make it work
+        // TÂCHE : complétez cette méthode pour définir la relation polymorphique (morphTo)
+        // Indice : consultez la documentation Eloquent sur les relations polymorphiques (https://laravel.com/docs/eloquent-relationships#polymorphic-relationships)
+        // Votre code ici
     }
 }

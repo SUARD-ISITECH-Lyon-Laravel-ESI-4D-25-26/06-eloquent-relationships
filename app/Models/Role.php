@@ -13,7 +13,7 @@ class Role extends Model
 
     public function users()
     {
-        // TASK: fix this by adding a parameter
+        // TÂCHE : corrigez cette méthode en ajoutant le paramètre manquant (nom de la table pivot)
         return $this->belongsToMany(User::class);
     }
 }

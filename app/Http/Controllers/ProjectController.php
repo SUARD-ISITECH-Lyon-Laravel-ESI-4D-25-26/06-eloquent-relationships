@@ -8,8 +8,10 @@ class ProjectController extends Controller
 {
     public function store(Request $request)
     {
-        // TASK: Add one sentence to save the project to the logged-in user
-        //   by $request->project_id and with $request->start_date parameter
+        // TÂCHE : ajoutez une ligne pour enregistrer le projet de l'utilisateur connecté
+        //   en utilisant $request->project_id et le paramètre $request->start_date
+        // Indice : utilisez la méthode attach() ou sync() sur la relation belongsToMany (https://laravel.com/docs/eloquent-relationships#attaching-detaching)
+        // Votre code ici
 
         return 'Success';
     }
